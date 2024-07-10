@@ -39,6 +39,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.input_embeddings.executor": "Run",
+    "Python.layer_normalization.executor": "Run",
     "Python.position_encoding.executor": "Run",
     "Python.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
