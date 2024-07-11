@@ -36,6 +36,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.build_transformer.executor": "Run",
     "Python.input_embeddings.executor": "Run",
     "Python.layer_normalization.executor": "Run",
     "Python.multi_head_attention.executor": "Run",
