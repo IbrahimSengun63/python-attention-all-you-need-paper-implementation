@@ -22,7 +22,7 @@ class MultiHeadAttention(nn.Module):
         d_k = query.shape[-1]
 
         # (batch,h,d_k,seq) -- > key after transpose
-        attention_scores = (query @ key.transope(-2, -1)) / math.sqrt(d_k)
+        attention_scores = (query @ key.transpose(-2, -1)) / math.sqrt(d_k)
 
         # Masking future words or padding words
         if mask is not None:
@@ -42,9 +42,9 @@ class MultiHeadAttention(nn.Module):
 
         # following three lines split query key and value according to the h and d_k
         #  (Batch,seq,d_model) --> (Batch,seq,d_k) --> (batch,h,seq,d_k)
-        query = query.view(query.shape[0], query[1], self.h, self.d_k).transpose(1, 2)
-        key = key.view(key.shape[0], key[1], self.h, self.d_k).transpose(1, 2)
-        value = value.view(value.shape[0], value[1], self.h, self.d_k).transpose(1, 2)
+        query = query.view(query.shape[0], query.shape[1], self.h, self.d_k).transpose(1, 2)
+        key = key.view(key.shape[0], key.shape[1], self.h, self.d_k).transpose(1, 2)
+        value = value.view(value.shape[0], value.shape[1], self.h, self.d_k).transpose(1, 2)
 
         # perform attention and return both attention values and output attention score
         x, self.attention_scores = MultiHeadAttention.attention(query, key, value, mask, self.dropout)

@@ -9,4 +9,4 @@ class ProjectionLayer(nn.Module):
 
     def forward(self, x):
         # (batch,seq,d_model)--> (batch,seq,vocab_size)
-        return torch.log_softmax(self.projection_layer[x], dim=-1)
+        return torch.log_softmax(self.projection_layer(x), dim=-1)
